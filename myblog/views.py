@@ -1,10 +1,9 @@
 from django.shortcuts import render
 from myblog.models import Post
-
+from . import utils
 
 def index(request):
-
-    posts = Post.objects.all()
+    posts = utils.getPosts()
     return render(request, 'index.html', {'posts':posts})
 
 def about(request):
@@ -13,9 +12,6 @@ def about(request):
 def contact(request):
     return render(request, 'contact.html')
 
-def post(request):
-    return render(request, 'post.html')
-
 def postID(request, id):
-    postByID = Post.objects.get(id=id)
-    return render(request, 'post.html', {'post':postByID})
+    post = utils.getPost(id)
+    return render(request, 'post.html', {'post':post})
