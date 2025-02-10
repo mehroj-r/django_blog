@@ -5,7 +5,7 @@ from myblog.models import Post
 from . import utils
 
 def index(request):
-    posts = utils.getPosts()
+    posts = utils.get_posts()
     return render(request, 'index.html', {'posts':posts})
 
 def about(request):
@@ -15,7 +15,7 @@ def contact(request):
     return render(request, 'contact.html')
 
 def postID(request, id):
-    post = utils.getPost(id)
+    post = utils.get_post(id)
     return render(request, 'post.html', {'post':post})
 
 def signup(request):

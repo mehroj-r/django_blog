@@ -2,31 +2,31 @@ import requests
 
 API_URL = "http://127.0.0.1:8000/api/"
 
-def getPosts():
-    response = requests.get(API_URL + "getPosts")
+def get_posts():
+    response = requests.get(API_URL + "get-posts")
 
     if response.status_code != 200:
         raise Exception(response.status_code)
 
     return response.json()
 
-def getAllPosts():
-    response = requests.get(API_URL + "getAllPosts")
+def get_all_posts():
+    response = requests.get(API_URL + "get-all-posts")
 
     if response.status_code != 200:
         raise Exception(response.status_code)
 
     return response.json()
 
-def getPost(id):
-    response = requests.get(API_URL + "getPost/" + str(id))
+def get_post(id):
+    response = requests.get(API_URL + "get-post/" + str(id))
 
     if response.status_code != 200:
         raise Exception(response.status_code)
 
     return response.json()
 
-def createPost(title, description, content, author, thumbnail):
+def create_post(title, description, content, author, thumbnail):
 
     data = {
         "title": title,
@@ -36,14 +36,14 @@ def createPost(title, description, content, author, thumbnail):
         "thumbnail": thumbnail,
     }
 
-    response = requests.post(API_URL + "createPost", data=data)
+    response = requests.post(API_URL + "create-post", data=data)
 
     if response.status_code != 200:
         raise Exception(response.status_code)
 
     return response.json()
 
-def updatePost(id, title, description, content, author, thumbnail):
+def update_post(id, title, description, content, author, thumbnail):
 
     data = {
         "id": id,
@@ -54,16 +54,16 @@ def updatePost(id, title, description, content, author, thumbnail):
         "thumbnail": thumbnail,
     }
 
-    response = requests.post(API_URL + "updatePost", data=data)
+    response = requests.post(API_URL + "update-post", data=data)
 
     if response.status_code != 200:
         raise Exception(response.status_code)
 
     return response.json()
 
-def deletePost(id):
+def delete_post(post_id):
 
-    response = requests.delete(API_URL + "deletePost/" + str(id))
+    response = requests.delete(API_URL + "delete-post/" + str(post_id))
 
     if response.status_code != 200:
         raise Exception(response.status_code)

@@ -2,10 +2,10 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('api/getPosts', views.getPosts, name='getPosts'),
-    path('api/getAllPosts', views.getAllPosts, name='getAllPosts'),
-    path('api/createPost', views.createPost, name='createPost'),
-    path('api/getPost/<int:id>', views.getPost, name='getPost'),
-    path('api/deletePost/<int:id>', views.deletePost, name='deletePost'),
-    path('api/updatePost/<int:id>', views.updatePost, name='updatePost'),
+    path('api/get-posts', views.LatestPostsView.as_view(), name='get-posts'),
+    path('api/get-all-posts', views.PostListView.as_view(), name='get-all-posts'),
+    path('api/create-post', views.PostListView.as_view(), name='create-post'),
+    path('api/get-post/<int:post_id>', views.PostDetailView.as_view(), name='get-post'),
+    path('api/delete-post/<int:post_id>', views.PostDetailView.as_view(), name='delete-post'),
+    path('api/update-post/<int:post_id>', views.PostDetailView.as_view(), name='update-post'),
 ]
