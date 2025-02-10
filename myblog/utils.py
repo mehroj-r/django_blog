@@ -64,6 +64,7 @@ def updatePost(id, title, description, content, author, thumbnail):
 def deletePost(id):
 
     response = requests.delete(API_URL + "deletePost/" + str(id))
+
     if response.status_code != 200:
         raise Exception(response.status_code)
 
